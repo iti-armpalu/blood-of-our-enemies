@@ -1,65 +1,139 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 export default function Home() {
+
+  const products = [
+    {
+      handle: "bottle-of-thermopylae",
+      title: "The Bottle of Thermopylae",
+      description:
+        "A bold, unwavering wine with deep, concentrated character. Crafted to reflect the strength, intensity, and unbreakable spirit of Thermopylae.",
+      image: "/bottle-of-thermopylae.png",
+    },
+    {
+      handle: "bottle-of-marathon",
+      title: "The Bottle of Marathon",
+      description:
+        "A bright, invigorating wine with energetic notes that capture the momentum and triumph of Marathon. Fresh, uplifting, and confidently charged.",
+      image: "/bottle-of-marathon.png",
+    },
+    {
+      handle: "bottle-of-salamis",
+      title: "The Bottle of Salamis",
+      description:
+        "An energetic, sharply defined wine with bright, cutting clarity—echoing the tactical brilliance and decisive naval victory at Salamis.",
+      image: "/bottle-of-salamis.png",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="space-y-0 p-0">
+      {/* HERO */}
+      <section
+        id="hero"
+        className="h-[calc(100vh-4rem)] pt-12 pl-60 flex items-center p-12"
+      >
+        <div className="max-w-3xl">
+          <h1 className="text-5xl lg:text-9xl font-bold mb-6 text-balance [font-family:var(--font-impact)]" >
+            A Wine Meant to Be Spilled
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 text-lg text-gray-600">
+            Wine was never meant to be a dainty affair. It was meant to flow like the lifeblood of the fallen, to be poured in great torrents over the victor’s feast. The Romans knew this. The Vikings lived by it. The legions, the warbands, the conquerors of old. They didn’t sip their wine while debating its bouquet. They drank. They spilled. They celebrated.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* SHOP */}
+      <section
+        id="shop"
+        className="h-[calc(100vh-4rem)] pt-8 flex flex-col justify-start items-center p-12 bg-gray-50"
+      >
+        <div className="max-w-6xl w-full h-full">
+
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-3xl lg:text-5xl font-bold text-balance [font-family:var(--font-impact)]">Featured Wines</h2>
+            <Link
+              href="/shop"
+              className="inline-flex items-center px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm lg:text-base"
+            >
+              View All Wines
+            </Link>
+          </div>
+
+          <p className="text-md text-gray-600 text-muted-foreground leading-relaxed mb-8">
+            Discover our signature collection.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <Card key={product.handle} className="max-w-md pt-0">
+                <CardContent className="px-0">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="aspect-video h-85 rounded-t-xl object-cover"
+                  />
+                </CardContent>
+
+                <CardHeader>
+                  <CardTitle>{product.title}</CardTitle>
+                  <CardDescription className="h-20">
+                    {product.description}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardFooter className="gap-3 max-sm:flex-col max-sm:items-stretch">
+                  <Button asChild>
+                    <Link href={`/products/${product.handle}`}>
+                      Enter the Bottle
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+
         </div>
-      </main>
+      </section>
+
+      {/* STORY */}
+      <section
+        id="story"
+        className="min-h-[calc(100vh-4rem)] pt-16 pl-60 flex items-center p-12"
+      >
+        <div className="max-w-3xl">
+          <h2 className="text-3xl font-semibold">Our Story</h2>
+          <p className="mt-4 text-gray-600">
+            More content here…
+          </p>
+        </div>
+      </section>
+
+      <section id="note" className="h-[calc(100vh-4rem)] pt-12 pl-60 flex items-center p-12">
+        <div className="max-w-3xl">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-8 text-balance [font-family:var(--font-impact)]">A Note on Respect for History</h2>
+          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              We acknowledge that the battles and historical events featured in our wine collection carry profound
+              human weight. These were moments of courage, sacrifice, and often tragedy that shaped the course of
+              nations and the lives of countless individuals.
+            </p>
+            <p>
+              Our aim is to honor history, not trivialize it. Every bottle in our collection is paired with carefully
+              researched historical narratives that respect the gravity of these events while celebrating the human
+              spirit and resilience they represent.
+            </p>
+            <p>
+              Through storytelling, we seek to educate and inspire. We believe that pairing exceptional wine with
+              compelling history creates a unique opportunity to reflect on our shared past while savoring the present
+              moment. Each sip becomes a toast to those who came before us and the lessons their experiences continue
+              to teach.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
