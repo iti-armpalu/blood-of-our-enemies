@@ -64,7 +64,7 @@ export default function ProductPage({ params }: PageProps) {
                             </div>
                             <div className="space-y-1">
                                 <p className="text-sm text-muted-foreground">Production</p>
-                                <p className="font-medium">Limited to 500 cases</p>
+                                <p className="font-medium">Limited to 6592 bottles</p>
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ export default function Home() {
       handle: "bottle-of-thermopylae",
       title: "The Bottle of Thermopylae",
       description:
-        "A bold, unwavering wine with deep, concentrated character. Crafted to reflect the strength, intensity, and unbreakable spirit of Thermopylae.",
+        "300 held the line. A bottle in their honor.",
       image: "/bottle-of-thermopylae.png",
     },
     {
